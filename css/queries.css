@@ -1,0 +1,386 @@
+/***************************/
+/* Below 1344px (Smaller desktops) */
+/***************************/
+
+@media (max-width: 84em) {
+  /* HERO SECTION */
+  .hero {
+    max-width: 120rem;
+  }
+
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  /* TESTIMONIALS SECTION */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/***************************/
+/* Below 1200px (Landscape Tablets) */
+/***************************/
+
+@media (max-width: 75em) {
+  /* GENERAL REUSABLE COMPONENTS */
+  html {
+    /* font-size: 10px; */
+    /* 9px / 16px = 0.562 = 56.25% */
+    font-size: 56.25%;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 0 3.2rem;
+  }
+
+  /* NAVIGATION */
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    gap: 4.8rem;
+  }
+
+  /* TESTIMONIALS SECTION */
+  .testimonials-container {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+/***************************/
+/* Below 944px (Tablets) */
+/***************************/
+
+@media (max-width: 59em) {
+  /* GENERAL REUSABLE COMPONENTS */
+  html {
+    /* font-size: 8px; */
+    /* 8px / 16px = 0.5 = 50% */
+    font-size: 50%;
+  }
+
+  /* MOBILE NAVIGATION */
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* We need to position the main-nav to absolute because we want this to be on top of our page which means we want it to overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* We want the main-nav to occupy the entire screen so we want the width to be 100% and the height to be 100vh */
+    width: 100%;
+    height: 100vh;
+    /* We also want the main-nav to be at the center of the viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* We want the main-nav to come from the right side of the page */
+    transform: translateX(100%);
+    transition: all 0.5s ease-in;
+    /* Hide Navigation */
+    /* We can't use display: none; for this because this property is not animatable which means we can't animate it or use transition to animate this property, what we can do instead is use another ways of hiding it */
+    /* 1) Hide element visually */
+    opacity: 0;
+    /* 2) Make it unaccessible to mouse and keyboard. Unlike display set to none, the element will really disappear from the page but if use opacity set to 0, it will only make the element invisible so we want to set the pointer-events to none that way, it won't be accessible when users use the keyboard tab to navigate the website */
+    pointer-events: none;
+    /* 3) Hide it from screen readers. Basically telling the screen readers that this element is really hidden */
+    visibility: hidden;
+  }
+
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .main-nav {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  /* When we want to open the navigation, we want to make the main-nav show up again */
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  /* We want the x icon to show up only when the navigation is open */
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  /* Then once the x icon is already visible, we want the menu icon to disappear */
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .main-nav-list {
+    /* We changed the flex-direction to column to stack the navigation list or items on top of each other */
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
+
+  .btn-mobile-nav {
+    /* Once the screen size is already 944px and below, that's when we want the mobile naviation icon to show up */
+    display: block;
+    /* We need to make sure that the button icon will always be on top */
+    z-index: 9999;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    gap: 6.4rem;
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+  }
+
+  .hero-text-box,
+  .hero-img-box {
+    text-align: center;
+  }
+
+  .delivered-meals {
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
+  .hero-img {
+    width: 60%;
+  }
+
+  /* FEATURED IN SECTION */
+  .logos img {
+    height: 2.4rem;
+  }
+
+  /* HOW IT WORKS SECTION */
+  .step-number {
+    font-size: 7.4rem;
+  }
+
+  /* MEALS SECTION */
+  .meal-content {
+    padding: 2.4rem 3.2rem 3.2rem;
+  }
+
+  /* TESTIMONIALS SECTION */
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* CTA SECTION */
+  .cta {
+    /* 3/5 = 60% + 2/5 = 40% */
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+}
+
+/***************************/
+/* Below 704px (Smaller Tablets) */
+/***************************/
+
+@media (max-width: 44em) {
+  /* GENERAL REUSABLE COMPONENTS */
+  .heading-secondary {
+    margin-bottom: 4.8rem;
+  }
+
+  /* MEALS SECTION */
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .diets {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  /* PRICING SECTION */
+  .pricing-plan {
+    width: 100%;
+  }
+
+  /* FOOTER */
+  .grid--footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+    margin-bottom: 3.2rem;
+  }
+}
+
+/***************************/
+/* Below 544px (Phones) */
+/***************************/
+
+@media (max-width: 34rem) {
+  /* GENERAL REUSABLE COMPONENTS */
+  .grid {
+    row-gap: 4.8rem;
+  }
+
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 1.6rem;
+  }
+
+  /* HERO SECTION */
+  .section-hero {
+    padding: 2.4rem 0 6.4rem;
+  }
+
+  .hero {
+    padding: 0 3.2rem;
+  }
+
+  .hero-img {
+    width: 80%;
+  }
+
+  /* FEATURED IN SECTION */
+  .logos img {
+    height: 1.2rem;
+  }
+
+  /* HOW IT WORKS SECTION */
+  /* It is number 2 and not number 1 because this is actually the 2nd child of the parent container. Which means this number refers to the number of the children of the parent element and not the number of the children that has the class of step-img-box. This step-img-box is indeed the first child that has a class name of "step-img-box". However, it is the second child of it's container. The first child is "step-text-box" and that is why we used number 2 instead of 1 . We just need to keep in mind that the number of the :nth-child is the actual order of the child element in the container and it has nothing to do with the class name */
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  .step-img-box {
+    /* Once the order of the images has been changed, the spacing between the image and the number 2 is the same with the spacing between the image and the previous step which doesn't make sense. The image should be close to the numbers where it belongs to. Since we are using Grid, we don't have the option to select the images only and change the gap. However, what we can do instead is use transform translate and select the images to move it down a little bit */
+    transform: translateY(2.4rem);
+  }
+
+  /* TESTIMONIALS SECTION */
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+
+  /* CTA SECTION */
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-text-box {
+    padding: 3.2rem;
+  }
+
+  .cta-img-box {
+    /* By setting the column to 1, the image will disappear and that is because this image is a background-image and it doesn't have any height and for it to show up again, we can just set a height*/
+    height: 32rem;
+    grid-row: 1;
+  }
+}
+
+/***************************/
+/* FIXING SAFARI FLEXBOX GAP */
+/***************************/
+
+/* These are the classes where we use the flexbox gap property. We are basically applying these styles to all the elements but not on the last-child. These styles will only apply if the no-flexbox-gap class is present to the body. */
+.no-flexbox-gap .main-nav-list li:not(:last-child) {
+  margin-right: 4.8rem;
+}
+
+.no-flexbox-gap .list-item:not(:last-child) {
+  margin-bottom: 1.6rem;
+}
+
+.no-flexbox-gap .list-icon:not(:last-child) {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .delivered-faces {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .meal-attribute:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.no-flexbox-gap .meal-icon {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .footer-row div:not(:last-child) {
+  margin-right: 6.4rem;
+}
+
+.no-flexbox-gap .social-links li:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.no-flexbox-gap .footer-nav li:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+@media (max-width: 75em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 3.2rem;
+  }
+}
+
+@media (max-width: 59em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 4.8rem;
+  }
+}

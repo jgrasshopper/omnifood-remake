@@ -1,0 +1,726 @@
+/***************************/
+/* HEADER  */
+/***************************/
+
+.header {
+  background-color: #fdf2e9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* I need to add a heigth because the navigation will then be sticky and in order for the stickey property to work properly, it's better to set a height */
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  position: relative;
+}
+
+.logo {
+  height: 2.2rem;
+}
+
+/***************************/
+/* NAVIGATION  */
+/***************************/
+
+.main-nav-list {
+  display: flex;
+  align-items: center;
+  /* gap: 3.2rem; */
+  gap: 4.8rem;
+  list-style: none;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  color: #333;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 1.8rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #cf711f;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  color: #fff;
+  background-color: #e67e22;
+  border-radius: 9px;
+  padding: 1.2rem 2.4rem;
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+  background-color: #cf711f;
+}
+
+/* MOBILE NAVIGATION */
+.btn-mobile-nav {
+  /* We want to remove the border and background since we are using the button property for this */
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* By default, we don't want this icon to show up so we need to hide it first */
+  display: none;
+}
+
+.icon-mobile-nav {
+  color: #333;
+  height: 4.8rem;
+  width: 4.8rem;
+}
+
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
+}
+
+/* STICKY NAVIGATION */
+.sticky .header {
+  background-color: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+  /* This will position the element fixed in the viewport and will not move as we scroll */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 8rem;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  /* We also want to add a z-index so it will always be on top of all the elements while we are scrolling on our page */
+  z-index: 999;
+}
+
+.sticky .section-hero {
+  /* We need to add a margin-top to the section-hero because the entire header has been position fixed which means it has now been taken out of the flow so we can fix that by adding a margin-top and it should be the same value of the section-hero's height which is in this case, 9.6rem */
+  margin-top: 9.6rem;
+}
+
+/***************************/
+/* HERO SECTION  */
+/***************************/
+
+.section-hero {
+  background-color: #fdf2e9;
+  padding: 4.8rem 0 9.6rem;
+}
+
+.hero {
+  display: grid;
+  /* Make the element vertically centered */
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 9.6rem;
+  max-width: 130rem;
+  margin: 0 auto;
+  /* I added a padding to the side of the hero content because the max-width is 1300px and if the user's screen is very small then the content will be glued right at the side of the page and to fix that, we just need to add a padding on both sides. */
+  padding: 0 3.2rem;
+}
+
+.hero-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 4.8rem;
+}
+
+.delivered-meals {
+  /* I needed to set the display property to flex of the parent container that way, the images and text will sit side by side. */
+  display: flex;
+  /* This is to center the element vertically */
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 8rem;
+}
+
+.delivered-imgs {
+  /* I want the images to also sit side by side */
+  display: flex;
+}
+
+.delivered-imgs img {
+  /* This will give a border to the images and it will appear as a cirlce border because of the border-radius */
+  border: 3px solid #fdf2e9;
+  height: 4.8rem;
+  width: 4.8rem;
+  border-radius: 50%;
+  /* What I want to do is to make the images sit on top of earch other, basically decrease the spacing between them. That is why I added a negative value for the margin-right. What this do is pull the element 16px more to the left. */
+  margin-right: -1.6rem;
+}
+
+.delivered-imgs img:last-child {
+  /* I also need to make sure to set the margin of the img's last child to 0 */
+  margin: 0;
+}
+
+.delivered-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.delivered-text span {
+  color: #cf711f;
+  font-weight: 700;
+}
+
+.hero-img {
+  /* 100% of it's parent element */
+  width: 100%;
+}
+
+/***************************/
+/* FEATURED IN SECTION  */
+/***************************/
+.section-featured {
+  padding: 4.8rem 0 3.2rem;
+}
+
+.heading-featured-in {
+  color: #888;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.75px;
+  margin-bottom: 2.4rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logos img {
+  height: 3.2rem;
+  filter: brightness(0);
+  opacity: 50%;
+}
+
+/***************************/
+/* HOW IT WORKS SECTION  */
+/***************************/
+
+.section-how {
+  padding: 9.6rem 0;
+}
+
+.step-text-box {
+  /* We need to vertically align these text because they don't have the same numbers of text which means the second and third paragraph will finish too soon and will not be vertically centered. There are 2 options on centering these text vertically, the first one is to set this parent element to a flex container. However, since they have different contents we will need to change the flex-direction to maintain how the contents are stack vertically and not sit side by side then will can then center it. But since this is actually a grid child, we can simply use align-self to center it vertically. */
+  align-self: center;
+}
+
+.step-number {
+  color: #ddd;
+  font-size: 8.6rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.step-description {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+.step-img-box {
+  /* Inside this box is the image itself and we want it to be centered horizontally and vertically and to easily centered it, we can use flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* We want to add two circle background to the image and to achieve that, we need to use a pseudo element, we also need to make sure to add it where the parent element of the image is because we can't use ::before and ::after to the images itself because in the HTML itself, we are not allowed to add child elements to the images */
+.step-img-box::before,
+.step-img-box::after {
+  content: "";
+  border-radius: 50%;
+  /* We need to set it to a block element especially if we want to make a shape */
+  display: block;
+  /* The square will be before the image and since we want it to be behind the image, we then want to position it absolute to move it around and center it. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.step-img-box::before {
+  background-color: #fdf2e9;
+  /* We want to add the same size of width and height because we want this element to be square that way, we can change the border-radius to zero */
+  width: 60%;
+  /* height: 60%; */
+  /* However, just by using height will not work. The element will not be perfectly square and in order for us to fix that we need to use another way of defining the height and there is a trick for that which is to use padding-bottom with the same value of the width. This just means that the padding-bottom of 60% is the 60% width of the parent's element width. The height will be zero but by adding this padding-bottom of 60% then it will look like a square and will have the same size of the width. */
+  padding-bottom: 60%;
+  /* We then set the z-index to -2 because we want the image to be on top of this circle */
+  z-index: -2;
+}
+
+.step-img-box::after {
+  /* This is for the smaller circle with a different background-color */
+  background-color: #fae5d3;
+  width: 45%;
+  padding-bottom: 45%;
+  /* We also want to set the z-index for this smaller circle to -1 because we want this to be on top of the bigger circle. */
+  z-index: -1;
+}
+
+.step-img {
+  width: 35%;
+}
+
+/***************************/
+/* MEALS SECTION  */
+/***************************/
+
+.section-meals {
+  padding: 9.6rem 0;
+}
+
+.meal {
+  /* There's a lot of different ways to make a card. In this case, we will be using a box-shadow to distinguish the card element from the rest of the page or the background-color of the website which is white */
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  border-radius: 11px;
+  /* We will see the rounder corners at the bottom of the card element but not on top where the image is. Basically, the image is lying on top of the rounded corners so we want to set the overflow to hidden that way, the image will no longer cover the rounder corners */
+  overflow: hidden;
+  /* The bigger the element is, is the higher we can transition the duration */
+  transition: all 0.4s;
+}
+
+.meal:hover {
+  /* When we hover over the element, we want the cards to move up a little bit */
+  transform: translateY(-1.2rem);
+  /* Since we want the element to move up when hover, we then want to manipulate the box-shadow and make it closer to the user. We can increase the value but also make it lighter. The higher value of a box-shadow should have a lighter color to make it look natural */
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+}
+
+.meal-img {
+  /* We want the size of the image 100% of it's container */
+  width: 100%;
+}
+
+/* We need to put the content of the card inside another container because we want to add a padding because we don't want the content to be glued right at the very side of the card and the reason why we need to put it inside another container is that, we don't want to add the padding where the image is becasue we want the image to take the whole available space */
+.meal-content {
+  padding: 3.2rem 4.8rem 4.8rem;
+}
+
+.meal-tags {
+  margin-bottom: 1.2rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.tag {
+  /* We can't use 50% in here because the height and the width of the element are not the same so the border-radius will look weird, what we can do instead is to use a very large value like 100px */
+  border-radius: 100px;
+  color: #333;
+  /* A paragraph is a block element and we need to change it to inline-block because we don't want this to take up the whole available width of the container */
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  text-transform: uppercase;
+}
+
+.tag--vegetarian {
+  background-color: #51cf66;
+}
+
+.tag--vegan {
+  background-color: #94d82d;
+}
+
+.tag--paleo {
+  background-color: #ffd43b;
+}
+
+.meal-title {
+  color: #333;
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+}
+
+.meal-attributes {
+  list-style: none;
+  display: flex;
+  /* We want to change the flex-direction to column so the element will not sit by side but stack on top of each other and we would also be able to use the gap property for doing this. */
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.meal-attribute {
+  display: flex;
+  /* This is to align the icon and text vertically. */
+  align-items: center;
+  gap: 1.6rem;
+  font-size: 1.8rem;
+}
+
+.meal-icon {
+  /* We have the option to add our own class for these icons and set our own height and width. Since these icons are also treated like text, font-size of 2.4rem will also work instead of using height and width. */
+  height: 2.4rem;
+  width: 2.4rem;
+  /* We can't use stroke or fill for these icons because these icons are treated like texts. */
+  color: #e67e22;
+}
+
+.all-recipes {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/***************************/
+/* TESTIMONIALS SECTION  */
+/***************************/
+
+.section-testimonials {
+  background-color: #fdf2e9;
+  display: grid;
+  /* We want to set this to display grid because we want the tesimonials and gallery to sit side by side. However, we want the gallery to make a little bit smaller than the customer testimonials. One trick that we can use when using "fr" is to use them as though they are percentages. Remember that these two values don't need to be one in order for the columns to have the same size. They simply need to have the same numbers, an example is 50fr 50fr and the columns will have the same size still. So, if we use 55fr and 45fr, the total will be 100% but the gallery will look a little bit smaller than the customer testimonials. */
+  grid-template-columns: 55fr 45fr;
+  /* When the size of the browser is smaller, we will see some weird spaces between the rows of the images and aligning it horizontally will remove those spaces */
+  align-items: center;
+}
+
+.testimonials-container {
+  /* We want to add a padding on each side of our testimonial container or parent element */
+  padding: 9.6rem;
+}
+
+.testimonials {
+  /* We want the testimonials and gallery to sit side by side so we want to set the display to grid and set it to two columns */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 4.8rem;
+  /* In many times when using grid, it not natural to have the same space between the row and columns, most of the time columns needs more spaces than the row */
+  column-gap: 8rem;
+}
+
+.testimonial-img {
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  width: 6.4rem;
+}
+
+.testimonial-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 1.6rem;
+}
+
+.testimonial-name {
+  color: #6f6f6f;
+  font-size: 1.6rem;
+}
+
+.gallery {
+  display: grid;
+  /* We want three columns of these images */
+  grid-template-columns: repeat(3, 1fr);
+  /* And we want to add some spacing between the images so they won't be glued to each other */
+  gap: 1.6rem;
+  /* We also want to add a padding with the same value of the gap we added that way, there will be the same spacing on each side of the gallery. */
+  padding: 1.6rem;
+}
+
+.gallery-item {
+  /* Once the images has already been scaled up when hover, what will happen is that the images will overflow their parent element and we don't want that effect and what we can do to prevent that is to set the overflow to hidden and make sure to do that in the images parent element. By doing this, the images will look like they have the same size as before but they scale in a little bit and they will look like they move towards the users as we hover over them */
+  overflow: hidden;
+}
+
+.gallery-item img {
+  /* We need to make sure to set the display of the images to block to remove those whitespaces between the images. The cause of those whitespaces are because the images are inline block */
+  display: block;
+  /* We need to make the images flexible so it will fit inside their container */
+  width: 100%;
+  transition: all 0.4s;
+}
+
+.gallery-item img:hover {
+  /* Whenever we hover over one of the images, we want the image to scale up so that they become a little bit larger */
+  transform: scale(1.1);
+}
+
+/***************************/
+/* PRICING SECTION  */
+/***************************/
+
+.section-pricing {
+  padding: 9.6rem 0;
+}
+
+.pricing-plan {
+  border-radius: 11px;
+  /* These two pricing plans are occupying the whole available width because of the two columns resuable grid that was created so what we can do is to manually change the width on every pricing plan*/
+  width: 75%;
+}
+
+.pricing-plan--starter {
+  /* But in order for the first pricing-plan not to look like it's kinda lost in the page because it doesn't have a background color just like the second one, what we can do is add a border on each side instead.  */
+  border: 2px solid #fdf2e9;
+  /* By changing the width to 75%, the pricing plan elements will no longer take the whole available width. However, there will be a big space at the center so we want to move the first pricing plan to the end so the boxes will look natural */
+  justify-self: end;
+  /* However, by adding a border that will create a problem with the alignment of the two buttons because as the 2 buttons approach the end of the screen the second button will be a little bit higher up than the first one and the reason for that is the 2px border was automatically added to the existing padding we have, and to fix that, we can simply remove the 2px to our padding which means the second box will have 4.8rem padding and this first box will have 4.6rem of padding */
+  padding: 4.6rem;
+}
+
+.pricing-plan--complete {
+  /* We want to add a background color to the second pricing plan to really emphasize it because it is the one that has more benefits to the users and the one that makes more money to the company */
+  background-color: #fdf2e9;
+  padding: 4.8rem;
+  position: relative;
+  /* Once we positioned the banner, since we are rotating it, the background-color will overflow and to fix that, we need to go to the parent element of the ::after pseudo element and set the overflow to hidden */
+  overflow: hidden;
+}
+
+/* We also want to create a banner that is on top of the pricing-plan--complete and add the word "best value" so the users know that the pricing plan that has really good value is the second one */
+.pricing-plan--complete::after {
+  background-color: #ffd43b;
+  color: #333;
+  content: "Best value";
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 0.8rem 8rem;
+  position: absolute;
+  /* Rotating it is not enough because we need to play around with the top and right so we can position the banner where we want. We need to also make sure to use % for it to be flexible */
+  top: 6%;
+  right: -18%;
+  text-transform: uppercase;
+  /* We want the banner to rotate a little bit */
+  transform: rotate(45deg);
+}
+
+.plan-header {
+  margin-bottom: 4.8rem;
+  /* We want the header of the pricing-plan to be at the center */
+  text-align: center;
+}
+
+.plan-name {
+  color: #cf711f;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.75;
+  margin-bottom: 3.2rem;
+  text-transform: uppercase;
+}
+
+.plan-price {
+  color: #333;
+  font-size: 6.2rem;
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+}
+
+/* We don't want the dollar sign to have the same size of the amount itself so what we can do is put it inside a span element so we can target it and make it smaller */
+.plan-price span {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-right: 0.8rem;
+}
+
+.plan-text {
+  color: #6f6f6f;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.plan-sign-up {
+  margin-top: 4.8rem;
+  text-align: center;
+}
+
+.plan-details {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.feature-icon {
+  background-color: #fdf2e9;
+  border-radius: 50%;
+  color: #e67e22;
+  height: 3.2rem;
+  width: 3.2rem;
+  /* For visual hierarchy, we want the title and text to be a little bit closer to earch other and the icon should have more margin between them */
+  margin-bottom: 3.2rem;
+  padding: 1.6rem;
+}
+
+.feature-title {
+  color: #333;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+}
+
+.feature-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+/***************************/
+/* CTA SECTION  */
+/***************************/
+
+.section-cta {
+  padding: 4.8rem 0 12.8rem;
+}
+
+.cta {
+  /* We want to create a backgroun-color but a linear gradient that is darker on one side and lighter on the other side. This will start from let top corner and will flow to the right bottom corner */
+  background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+  /* The darker the background-color is, the darker the box-shadow should be because otherwise the box-shadow will not be visible */
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+  border-radius: 11px;
+  /* We want the cta-text and cta-img to be side by side */
+  display: grid;
+  /* 2/3 = 66.6% + 1/3 = 33.3% */
+  grid-template-columns: 2fr 1fr;
+  /* We need to set the overflow to hidden to the parent element of the image because the image itself is overlapping. */
+  overflow: hidden;
+}
+
+.cta-text-box {
+  color: #45260a;
+  padding: 4.8rem 6.4rem 6.4rem;
+}
+
+.cta .heading-secondary {
+  /* We want to target the heading-secondary and use descendant to override the color and margin from the resuable class that was already created */
+  color: inherit;
+  margin-bottom: 3.2rem;
+}
+
+.cta-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 4.8rem;
+}
+
+.cta-img-box {
+  /* It's best to add the image through CSS to make it easier to overlay the color. We want a linear gradient to be on top of the image but we want the gradient to be transparent a little bit so we can still see the image */
+  background: linear-gradient(
+      to right bottom,
+      rgba(235, 151, 78, 0.35),
+      rgba(230, 125, 34, 0.35)
+    ),
+    url(../img/eating.jpg) no-repeat center center/ cover;
+}
+
+.cta-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3.2rem;
+  row-gap: 2.4rem;
+}
+
+.cta-form label {
+  /* We want our lable to be on one line and separate from our input element */
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.cta-form input,
+.cta-form select {
+  background-color: #fdf2e9;
+  /* We also want to remove the border in all input fields */
+  border: none;
+  border-radius: 9px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  /* Input and select doesn't automatically inherit the font-family and color that we have in our body and because of that we need to manually add the font-family and color with the value of inherit */
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.8rem;
+  padding: 1.2rem;
+  width: 100%;
+}
+
+/* This will select the placeholder that is inside the input elements and style it */
+.cta-form input::placeholder {
+  color: #aaa;
+}
+
+.cta *:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+}
+
+/***************************/
+/* FOOTER */
+/***************************/
+
+.footer {
+  border-top: 1px solid #eee;
+  padding: 12.8rem 0;
+}
+
+.grid--footer {
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  display: block;
+  margin-bottom: 3.2rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 2.4rem;
+  list-style: none;
+}
+
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.copyright {
+  color: #767676;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-top: auto;
+}
+
+.footer-heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.contacts {
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.address {
+  margin-bottom: 2.4rem;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  list-style: none;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  color: #767676;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+  color: #555;
+}

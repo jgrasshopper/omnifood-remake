@@ -1,0 +1,291 @@
+/* 
+
+--- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes (px):
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights:
+Default: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+- Line-heights:
+Default: 1
+Small: 1.05
+Medium: 1.2
+Paragraph: 1.6
+Large: 1.8
+
+- Letter-spacing
+0.5px
+0.75px
+
+
+--- 02 COLORS
+
+- Primary: #e67e22
+- Tints (lighter version): 
+#fdf2e9
+#fae5d3
+#eb984e
+
+- Shades (darker version): 
+#cf711f
+#45260a
+
+- Accents:
+
+- Greys: 
+#888
+#767676 (lightest grey allowed on #fff)
+#6F6F6F (lightest grey allowed on #fdf2e9)
+#555
+#333
+
+--- 03 SHADOWS
+
+0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+--- 04 BORDER-RADIUS
+
+Default: 9px
+Medium: 11px
+
+--- 05 WHITESPACE
+
+- Spacing (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+/***************************/
+/* GENERAL REUSABLE COMPONENTS  */
+/***************************/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  font-size: 62.5%;
+  /* scroll-behavior: smooth; */
+}
+
+body {
+  color: #555;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  /* This means that all the elements that overflow the x axis will be hidden.  */
+  overflow-x: hidden;
+}
+
+/* We want those numbers to be bold and one way to do that is to put them inside the strong element. However, the strong element is too strong where the boldness is too much so what we can do is change the default to whatever font-weight we want like 500. */
+strong {
+  font-weight: 500;
+}
+
+.container {
+  /* most use width */
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+  /* margin-bottom: 9.6rem; */
+}
+
+/* .grid:last-child {
+  margin-bottom: 0;
+} */
+
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--center-v {
+  align-items: center;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  color: #333;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  color: #cf711f;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.75px;
+  margin-bottom: 1.6rem;
+  text-transform: uppercase;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  border-radius: 9px;
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.6rem 3.2rem;
+  text-decoration: none;
+  /* transition: background-color 0.3s; */
+  transition: all 0.3s;
+
+  /* Only neccessary for the .btn */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  /* The button will look bigger in default because the button is grid itself so it's stretching to fill out the whole available space, we do want to change that so we want to vertically align it to the end */
+  align-self: end;
+  /* The button will now start at the end but it will still look bigger than the other element and we need to change the padding to 1.2rem to match the other padding of the other elements */
+  padding: 1.2rem;
+}
+
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9;
+  /* border: #fff solid 3px; */
+  /* If I want to add a white border around the button, using "border: #fff solid 3px;" will not work just as I wanted because what will happen is that the border will be added at the outside of the button so if I hover over it, the element or the entire layout will look like it's moving or will jump a little bit and what I want is to add the border inside the button. What I did is used a trick so I can add the border inside which is to use the box-shadow property without any offset in any direction, I also don't want it to have any blur but I scaled it to 3px then add the color which is white and finally add the "inset" keyword. By adding this keyword, the border will be added inside the element. */
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.link:link,
+.link:visited {
+  color: #e67e22;
+  /* We want to add a border-bottom to recreate the underline of this link. Also, instead of writing the hex color that we want, we can simply use the "currentColor" keyword and what this will do is to take the color that is currently the text color */
+  border-bottom: 1px solid currentColor;
+  /* We need to alway changed the display of a link to an inline-block especially if we want to use padding for it to work. */
+  display: inline-block;
+  /* We want to remove the underline. However, we want to recreate it using another property */
+  text-decoration: none;
+  /* We also want to add a padding-bottom to add a space at the bottom that way, the border-bottom will not be glued to the link itself */
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+.link:hover,
+.link:active {
+  /* We want to remove the border-bottom when we hover over the link. However, we can't just say border-bottom to none or 0 because once we hover over the link, the entier layout will jump or move a little bit by 1px and that is because that 1px is part of the element and when we remove that on hover, then the element will become smaller and messes up the spaces of the entire page. Instead, what we do is to still keep the 1px and solid border but change the color to transparent */
+  border-bottom: 1px solid transparent;
+  color: #cf711f;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.list-item {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.list-icon {
+  color: #e67e22;
+  height: 3rem;
+  width: 3rem;
+}
+
+/* Focus state is when we click on an element like links and buttons or use the keyboard which is the tab button to navigate the website, it will have a blue or black ring around the element when the element is focus and this is because of accessibility. This will make it easier for those users who can only use keyboards to navigate the website. However, this border is ugly so we have the option to remove it and change the default look of it */
+*:focus {
+  /* That blue or black ring that we can see around the links and buttons is called outline so what we can do is remove it */
+  outline: none;
+  /* However, removing the outline is not enough because that will then ruin the accessibility of the page, it will be harder when users use their keyboards because they won't know which one is being focus. What we can do is create our own outline where that is nicer */
+  /* Since our elements are rounded, we want our outline to be rounded as well when it's focus and by using the outline property, that will not make it round, it will just be a square. So, what we can do is use a trick by using a box-shadow */
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+}
+
+/* HELPER/SETTINGS CLASSES */
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+  text-align: center;
+}
